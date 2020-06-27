@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/vue-material.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="libs/vue.js"></script>
+    <script type="text/javascript" src="libs/vue-material.js"></script>
+    <script type="text/javascript" src="libs/axios.js"></script>
+    <script type="text/javascript" src="src/amps-service.js"></script>
+
+    <!-- Tab Info -->
+    <link rel="icon" href="/favicon.ico">
+    <title>Bass Amps Romania</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <!-- Navigation Bar -->
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                <a class="nav-item nav-link text-white" :href="'addAmp.html'"> Add Amp </a>
+            </div>
+        </div>
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" :href="'index.html'">
+                <img src="favicon.ico" width="30" height="30" class="d-inline-block align-top" alt=""> Bass Amps Inventory
+            </a>
+        </nav>
+        <!-- ------------- -->
+
+
+        <!-- HomePage -->
+
+        <div id="page">
+
+            <div class="title">Amps</div>
+
+            <p class="noData text-white" v-if="amps.length == 0">No amps found</p>
+
+            <div class="" v-if="amps.length > 0">
+                <div class="row justify-content-center" style="margin-top: 5%;margin-left: 2%;margin-right: 2%;">
+                    <div class="col-auto mb-3" style="display: flex;" v-for="amp in amps">
+                        <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="embed-responsive embed-responsive-21by9">
+                                <img class="card-img-top embed-responsive-item" :src="'src/images/'+amp.id+'.jpg'" alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" :href="'details.html?id='+amp.id"> {{ amp.name }} </h5>
+                                <p class="card-text text-muted" v-if="amp.isOnTransistor == 1"> On Transistor </p>
+                                <p class="card-text text-muted" v-if="amp.isOnLamps == 1"> On Lamps </p>
+                                <p class="card-text text-muted" v-if="amp.isHybrid == 1"> Hybrid </p>
+                                <p class="card-text dets"><a :href="'details.html?id='+amp.id"> See full details </a></p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"> Price: {{ amp.price }} 
+                                  <button class="del" style="float: right;" v-on:click="deleteAmp(amp.id)">Delete</button>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="endData text-white"> This was all. </p>
+
+        </div>
+        <!-- --------- -->
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

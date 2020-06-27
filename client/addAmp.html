@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/ampData.css" />
+    <link rel="stylesheet" href="styles/vue-material.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="libs/vue.js"></script>
+    <script type="text/javascript" src="libs/vue-material.js"></script>
+    <script type="text/javascript" src="libs/axios.js"></script>
+    <script type="text/javascript" src="src/amps-service.js"></script>
+
+    <!-- Tab Info -->
+    <link rel="icon" href="/favicon.ico">
+    <title>Add Amp</title>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <a class="navbar-brand a" href="index.html">
+            <img src="favicon.ico" width="30" height="30" class="d-inline-block align-top" alt=""> Bass Amps Inventory
+        </a>
+    </nav>
+    <!-- ------------- -->
+
+    <div id="update">
+        <div id="details">
+
+            <div class="title"> Add a New Amplifier: </div>
+
+            <label>Amp Name:</label>
+            <input type="text" v-model="amp.name"><br><br>
+
+            <label>Amp Power:</label>
+            <input type="text" v-model="amp.power"><br><br>
+
+            <label>Amp Equalizer:</label>
+            <input type="text" v-model="amp.equalizer"><br><br>
+
+            <label>Amp Compressor:</label>
+            <input type="text" v-model="amp.compressor"><br><br>
+
+            <label>Amp Limiter:</label>
+            <input type="text" v-model="amp.limiter"><br><br>
+
+            <label>Amp Effects Processor:</label>
+            <input type="text" v-model="amp.effectsProcessor"><br><br>
+
+            <label>Amp External Effect Loops:</label>
+            <input type="text" v-model="amp.externalEffectLoops"><br><br>
+
+            <label>Amp Speaker Conncetor:</label>
+            <input type="text" v-model="amp.speakerConnector"><br><br>
+
+            <label>Amp Headphone Output:</label>
+            <input type="text" v-model="amp.headphoneOutput"><br><br>
+
+            <label>Amp DI Output:</label>
+            <input type="text" v-model="amp.diOutput"><br><br>
+
+            <label>Amp Tuner Out:</label>
+            <input type="text" v-model="amp.tunerOut"><br><br>
+
+            <label>Amp Rack Mount:</label>
+            <input type="text" v-model="amp.rackMount"><br><br>
+
+            <label>Amp Price:</label>
+            <input type="text" v-model="amp.price"><br><br>
+
+            <label>Amp Control:</label>
+            <input type="text" v-model="amp.control"><br><br>
+
+            <label>Amp Boost:</label>
+            <input type="text" v-model="amp.boost"><br><br>
+
+            <label>Amp Dimensions (H x W x D):</label>
+            <input type="text" v-model="amp.dimensionsHxWxD"><br><br>
+
+            <label>Amp Weight:</label>
+            <input type="text" v-model="amp.weight"><br><br>
+
+            <label>Amp is on Transistor:</label>
+            <input type="text" v-model="amp.isOnTransistor"><br><br>
+
+            <label>Amp is on Lamps:</label>
+            <input type="text" v-model="amp.isOnLamps"><br><br>
+
+            <label>Amp is Hybrid:</label>
+            <input type="text" v-model="amp.isHybrid"><br><br>
+
+            <label>Amp Impedance:</label>
+            <input type="text" v-model="amp.impedance"><br><br>
+
+            <label>Amp Housing:</label>
+            <input type="text" v-model="amp.housing"><br><br>
+
+            <label>Amp PreAmp Tubes:</label>
+            <input type="text" v-model="amp.preAmpTubes"><br><br>
+
+            <label>Amp Driver Tubes:</label>
+            <input type="text" v-model="amp.driverTubes"><br><br>
+
+            <label>Amp Power Amp Tubes:</label>
+            <input type="text" v-model="amp.powerAmpTubes"><br><br>
+
+            <label>Amp Controls:</label>
+            <input type="text" v-model="amp.controls"><br><br>
+
+            <label>Amp Mids:</label>
+            <input type="text" v-model="amp.mids"><br><br>
+
+            <label>Amp Slave:</label>
+            <input type="text" v-model="amp.slave"><br><br>
+
+            <label>Amp Switch A:</label>
+            <input type="text" v-model="amp.switchA"><br><br>
+
+            <label>Amp Switch B:</label>
+            <input type="text" v-model="amp.switchB"><br><br>
+
+            <label>Amp Switch C:</label>
+            <input type="text" v-model="amp.switchC"><br><br>
+
+            <label>Amp Switch D:</label>
+            <input type="text" v-model="amp.switchD"><br><br>
+
+            <label>Amp Effects:</label>
+            <input type="text" v-model="amp.effects"><br><br>
+
+            <label>Amp Output:</label>
+            <input type="text" v-model="amp.output"><br><br>
+
+            <br><br><br>
+            <button class="upDt" v-on:click="addAmp()">Add</button>
+            <br><br><br> <br><br><br>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/addAmplifier.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<html>
+
+<head>
+    <!-- Meta -->
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Links -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/details.css" />
+    <link rel="stylesheet" href="styles/vue-material.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="libs/vue.js"></script>
+    <script type="text/javascript" src="libs/vue-material.js"></script>
+    <script type="text/javascript" src="libs/axios.js"></script>
+    <script type="text/javascript" src="src/amps-service.js"></script>
+
+    <!-- Tab Info -->
+    <link rel="icon" href="/favicon.ico">
+    <title>Amp Detail</title>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar sticky-top navbar-dark bg-dark">
+        <a class="navbar-brand a" href="index.html">
+            <img src="favicon.ico" width="30" height="30" class="d-inline-block align-top" alt=""> Bass Amps Inventory
+        </a>
+    </nav>
+    <!-- ------------- -->
+
+    <!-- Details Page -->
+    <div id="page">
+        <div id="details">
+
+            <div class="title">{{amp.name}}</div>
+
+            <div class="clearfix">
+                <img class="img-fluid float-left pull-left mr-5" :src="'src/images/'+amp.id+'.jpg'" style="width:50%; height:50%;object-fit: cover;" />
+
+                <div class="label-price text-white" style="padding-left: 55%;font-weight: bolder;" v-if="amp.price == null">Price: Not disponible</div>
+                <div class="label-price text-white" style="padding-left: 55%;font-weight: bolder;" v-if="amp.price != null">Price: {{amp.price}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.power == null">Power: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.power != null">Power: {{amp.power}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.equalizer == null">Equalizer: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.equalizer != null">Equalizer: {{amp.equalizer}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.compressor == null">Compressor: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.compressor != null">Compressor: {{amp.compressor}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.limiter == null">Limiter: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.limiter != null">Limiter: {{amp.limiter}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.effectsProcessor == null">Effects Processor: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.effectsProcessor != null">Effects Processor: {{amp.effectsProcessor}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.externalEffectLoop == null">External Effect Loop: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.externalEffectLoop != null">External Effect Loop: {{amp.externalEffectLoop}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.connectorForExternalSpeaker == null">Connector for External Speaker: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.connectorForExternalSpeaker != null">Connector for External Speaker: {{amp.connectorForExternalSpeaker}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.headphoneConnection == null">Headphone Connection: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.headphoneConnection != null">Headphone Connection: {{amp.headphoneConnection}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.diOutput == null">Di Output: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.diOutput != null">Di Output: {{amp.diOutput}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.tunerOutput == null">Tuner Output: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.tunerOutput != null">Tuner Output: {{amp.tunerOutput}}</div>
+                <div style="padding-left: 55%;">----------------------------------------------------------------</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.rackMount == null">Rack Mount: No</div>
+                <div class="label text-white" style="padding-left: 55%;" v-if="amp.rackMount != null">Rack Mount: {{amp.rackMount}}</div>
+            </div>
+
+            <div class="sub-t"> Additional Information: </div>
+
+            <div class="det text-white" v-if="amp.control != null"><span>&#9989;</span> Control: {{amp.control}}</div>
+            <div class="det text-white" v-if="amp.boost != null"><span>&#9989;</span> Boost: {{amp.boost}}</div>
+            <div class="det text-white" v-if="amp.dimensionsHxWxD != null"><span>&#9989;</span> Dimensions (HxWxD): {{amp.dimensionsHxWxD}}</div>
+            <div class="det text-white" v-if="amp.weight != null"><span>&#9989;</span> Weight: {{amp.weight}}</div>
+            <div class="det text-white" v-if="amp.impedance != null"><span>&#9989;</span> Impedance: {{amp.impedance}}</div>
+            <div class="det text-white" v-if="amp.housing != null"><span>&#9989;</span> Housing: {{amp.housing}}</div>
+            <div class="det text-white" v-if="amp.preAmpTubes != null"><span>&#9989;</span> Pre Amp Tubes: {{amp.preAmpTubes}}</div>
+            <div class="det text-white" v-if="amp.driverTubes != null"><span>&#9989;</span> Driver Tubes: {{amp.driverTubes}}</div>
+            <div class="det text-white" v-if="amp.powerAmpTubes != null"><span>&#9989;</span> Power Amp Tubes: {{amp.powerAmpTubes}}</div>
+            <div class="det text-white" v-if="amp.controls != null"><span>&#9989;</span> Controls: {{amp.controls}}</div>
+            <div class="det text-white" v-if="amp.mids != null"><span>&#9989;</span> Mids: {{amp.mids}}</div>
+            <div class="det text-white" v-if="amp.slave != null"><span>&#9989;</span> Slave: {{amp.slave}}</div>
+            <div class="det text-white" v-if="amp.switchA != null"><span>&#9989;</span> SwitchA: {{amp.switchA}}</div>
+            <div class="det text-white" v-if="amp.switchB != null"><span>&#9989;</span> SwitchB: {{amp.switchB}}</div>
+            <div class="det text-white" v-if="amp.switchC != null"><span>&#9989;</span> SwitchC: {{amp.switchC}}</div>
+            <div class="det text-white" v-if="amp.switchD != null"><span>&#9989;</span> SwitchD: {{amp.switchD}}</div>
+            <div class="det text-white" v-if="amp.effects != null"><span>&#9989;</span> Effects: {{amp.effects}}</div>
+            <div class="det text-white" v-if="amp.output != null"><span>&#9989;</span> Output: {{amp.output}}</div>
+
+            <br><br><br>
+            <a class="upDt" :href="'update.html?id='+amp.id" target="_self">Update</a>
+            <br><br><br> <br><br><br>
+
+        </div>
+    </div>
+    <!-- ------------- -->
+
+    <!-- Scripts -->
+    <script src="src/details.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
