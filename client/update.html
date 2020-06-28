@@ -140,7 +140,7 @@
             <input type="text" v-model="amp.output"><br><br>
 
             <br><br><br>
-            <button class="upDt" v-on:click="update(amp.id)">Save</button>
+            <button class="upDt" :href="'index.html'" @click="update(amp.id)">Save</button>
             <br><br><br> <br><br><br>
 
             <p>{{message}}</p>

@@ -52,6 +52,7 @@ function run() {
                         this.message = response.data;
                         console.log(this.message); // saved
                         alert("The New Amplifier Had Been Added!");
+                        window.location = 'index.html';
                     }
                 );
 

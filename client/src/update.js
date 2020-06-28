@@ -24,6 +24,7 @@ function run() {
                     (response) => {
                         this.message = response.data; // saved
                         alert("Changes have been saved saved!");
+                        window.location = 'index.html';
                     }
                 );
             }
